@@ -143,20 +143,11 @@ while :; do
 done
 
 if [ ${ARG_NUM} == 0 ]; then
-  #Select Mode
-  while :; do echo
-    echo 'Please Select FFMPEG Install Mode: '
-    echo -e "\t${CMSG}1${CEND}. [SW] CPU Mode (Default)"
-    echo -e "\t${CMSG}2${CEND}. [HW] Intel GPU Mode"
-    echo -e "\t${CMSG}3${CEND}. [HW] Nvidia GPU Mode"
-    read -e -p "Please input a number:(Default 1 press Enter) " mode
-    mode=${mode:-1}
-    if [[ ! ${mode} =~ ^[1-3]$ ]]; then
-      echo "${CWARNING}input error! Please only input number 1~3${CEND}"
-    else
-      break
-    fi
-  done
+  # Auto select CPU Mode (mode=1) without user interaction
+  mode=1
+  echo "Auto-selecting FFMPEG Install Mode:"
+  echo -e "\t${CMSG}1${CEND}. [SW] CPU Mode (Auto-selected)"
+  echo "Proceeding with CPU mode installation..."
 fi
 # ARG_NUM END
 
